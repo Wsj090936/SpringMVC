@@ -15,10 +15,23 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 		<!-- 配置处理器映射器，这是SpringMVC默认的映射器，它可以根据我没自定义的Controller的name属性url去找到该动作类-->
 	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+	<!-- 此映射器可以配置多个url -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/mine.do">myController</prop>
+				<prop key="/test.do">myController</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 映射器：如果请求的url为Controller类名首字母小写的话，它就会找到对应的Controller -->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"></bean>
 	<!-- 配置处理器适配器，用来执行动作类，它是Spring默认的处理器适配器 -->
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+	<!-- HttpRequestHandlerAdapter适配器 -->
+	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
 	<!-- 配置动作类，Controller，其中name属性表示请求的url，根据此url可以找到controller.MyController这个动作类 -->
-	<bean name="/hello.do" class="controller.MyController"></bean>
+	<bean id="myController" name="/hello.do" class="controller.MyController"></bean>
 	<!-- 配置视图解析器，用来解析动作类中设置的逻辑视图
 		从动作类中的setViewName("index")中设置的逻辑视图名，和下面的prefix和suffix拼接起来，
 		最后形成了: /WEB-INF/JSP/index.jsp 这个物理视图
@@ -28,4 +41,6 @@
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<bean name="/toadd.do" class="controller.ToaddController"></bean>
+	<bean name="/command.do" class="controller.CommadnContraller"></bean>
 </beans>

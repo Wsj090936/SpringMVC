@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>${hello }</h1>
+	<h1>${user.username } || ${user.password } || ${user.birthday }</h1>
 </body>
 </html>
