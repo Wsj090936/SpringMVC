@@ -3,6 +3,7 @@ package domain;
 import java.util.Date;
 
 public class User {
+	public int id;
 	public String username;
 	public String password;
 	public Date birthday;
@@ -27,6 +28,12 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", birthday=" + birthday + "]";
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

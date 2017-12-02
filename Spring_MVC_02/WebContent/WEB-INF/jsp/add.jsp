@@ -50,9 +50,9 @@
 			<hr color="red" size="10">
 	<form action="${pageContext.request.contextPath }/user/receiveMap.do"
 		method="post">
-		姓名:<input type="text" name="maps{'username'}" id="username"/> 
-		密码:<input type="password" name="maps{'password'}" id="password"/> 
-		生日:<input type="text" name="maps{'birthday'}" id="birthday"/> 
+		姓名:<input type="text" name="maps['username']" id="username"/> 
+		密码:<input type="password" name="maps['password']" id="password"/> 
+		生日:<input type="text" name="maps['birthday']" id="birthday"/> 
 		<input type="submit" value="提交" />
 	</form>
 </body>
