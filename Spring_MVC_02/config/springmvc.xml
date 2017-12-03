@@ -15,15 +15,23 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 		<!-- 扫描该包下的所有类 -->
 	<context:component-scan base-package="controller"></context:component-scan>
+	
 <!-- 配置注解的处理器映射器 -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
 	<!-- 配置注解的处理器适配器 -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters"><!-- 配置json支持 -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+		</property>
+	</bean>
 	<!-- 配置视图解析器，用来解析动作类中设置的逻辑视图
 		从动作类中的setViewName("index")中设置的逻辑视图名，和下面的prefix和suffix拼接起来，
 		最后形成了: /WEB-INF/JSP/index.jsp 这个物理视图
 		根据它去访问jsp页面
 	 -->
+	<!-- 
+		这条配置配置之后，就相当于上面两个处理器映射器和适配器的配置，同时也提供了对json数据的支持，很简化
+	 <mvc:annotation-driven></mvc:annotation-driven> -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>

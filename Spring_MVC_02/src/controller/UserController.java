@@ -6,7 +6,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import domain.User;
 import domain.UserExt;
@@ -69,8 +72,8 @@ public class UserController {
 		model.addAttribute("userList", list);
 		return "list";
 	}
-	@RequestMapping("upDateById")
-	public String upData(Integer id,Model model){//前往回显页面
+	@RequestMapping("upDateById/{id}")
+	public String upData(@PathVariable Integer id,Model model){//前往回显页面
 		User user1 = new User();
 		user1.setId(id);
 		user1.setUsername("tom");
@@ -79,7 +82,17 @@ public class UserController {
 		return "edit";
 	}
 	
+	//测试SpringMVC对json的支持
+	@RequestMapping("toJson")
+	public String toJson(){
+		return "json1";
+	}
 	
+	@RequestMapping("requestJson")
+	public @ResponseBody User requestJson(@RequestBody User user){
+		System.out.println(user);
+		return user;
+	}
 	
 	
 	@RequestMapping("toAdd")

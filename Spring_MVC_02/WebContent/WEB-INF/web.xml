@@ -10,7 +10,7 @@
 </servlet>
 <servlet-mapping>
 	<servlet-name>springmvc</servlet-name>
-	<url-pattern>*.do</url-pattern>
+	<url-pattern>/rest/*</url-pattern>
 </servlet-mapping>
 <filter><!-- 解决乱码 -->
 	<filter-name>characterEncoding</filter-name>

@@ -18,7 +18,7 @@
 				<td>${user.username }</td>
 				<td>${user.password }</td>
 				<td>
-					<a href="${pageContext.request.contextPath }/user/upDateById.do?id=${user.id }">修改</a>
+					<a href="${pageContext.request.contextPath }/rest/user/upDateById/${user.id }">修改</a>
 				</td>
 			</tr>
 		</c:forEach>
