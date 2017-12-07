@@ -18,5 +18,14 @@ public class ItemsServiceImpl implements ItemsService {
 		List<Items> list = itemsMapper.findAll();
 		return list;
 	}
+	@Override
+	public Items findById(Integer id) {
+		Items item = itemsMapper.findById(id);
+		return item;
+	}
+	@Override
+	public void updata(Items items) {
+		itemsMapper.updata(items);
+	}
 
 }

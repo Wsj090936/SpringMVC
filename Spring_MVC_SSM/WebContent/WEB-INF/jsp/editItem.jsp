@@ -41,7 +41,7 @@ function submitImgSize1Upload(){
 
 </head>
 <body> 
-<form id="itemForm" action="${pageContext.request.contextPath }/items/saveOrUpdate.do" method="post">
+<form id="itemForm" action="${pageContext.request.contextPath }/items/update.do" method="post">
 <input type="hidden" name="id" value="${item.id }"/>
 修改商品信息：
 <table width="100%" border=1>
@@ -59,14 +59,14 @@ function submitImgSize1Upload(){
 </tr>
 <tr>
 	<td>商品图片</td>
-	<td>
+ 	<td>
 		<p><label></label>
 		<img id='imgSize1ImgSrc' src='${picPath }${item.pic }'  height="100" width="100" />
 		<input type='file' id='imgSize1File' name='imgSize1File' class="file" onchange='submitImgSize1Upload()' /><span class="pos" id="imgSize1FileSpan">请上传图片的大小不超过3MB</span>
         <input type='hidden' id='imgSize1' name='pic' value='' reg="^.+$" tip="亲！您忘记上传图片了。" />
 		</p>
  
-	</td>
+	</td> 
 </tr>
 <tr>
 	<td>商品简介</td>

@@ -6,4 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAll" resultType="sj.wsj.domain.Items">
 		SELECT * FROM Items
 	</select>
+	<select id="findById" resultType="sj.wsj.domain.Items"
+		parameterType="int">
+		SELECT * FROM items WHERE id=#{id}
+	</select>
+	<update id="updata" parameterType="sj.wsj.domain.Items">
+		update items
+		set name = #{name,jdbcType=VARCHAR},
+		price = #{price,jdbcType=REAL},
+		pic = #{pic,jdbcType=VARCHAR},
+		createtime = #{createtime,jdbcType=TIMESTAMP},
+		detail = #{detail,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
 </mapper>

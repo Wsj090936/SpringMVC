@@ -2,6 +2,8 @@ package sj.wsj.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Items {
     private Integer id;
 
@@ -10,7 +12,7 @@ public class Items {
     private Float price;
 
     private String pic;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createtime;
 
     private String detail;
