@@ -11,31 +11,28 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.form.js"></script>
 <script type="text/javascript">
-function submitImgSize1Upload(){
-	
-	
+function submitImgSize1Upload(){//当用户选择了文件时，由于onchange属性中调用的是这个函数，这个函数就会触发
+/* 	$.ajax({
+
+	}) */
 	var option={
 			type:'POST',
-			url:'${pageContext.request.contextPath }/upload/uploadPic.do',
+			url:'${pageContext.request.contextPath}/upload/uploadpic.do',
 			dataType:'text',
 			data:{
-				fileName : 'imgSize1File'
+				fileName:'imgSize1File'
 			},
 			success:function(data){
-				
-				//把json格式的字符串转换成json对象
-				var jsonObj = $.parseJSON(data);
-				
-				//返回服务器图片路径，把图片路径设置给img标签
-				$("#imgSize1ImgSrc").attr("src",jsonObj.fullPath);
-				//数据库保存相对路径
-				$("#imgSize1").val(jsonObj.relativePath);
+				//从后台返回的字符串类型转换为json数据类型
+				var jsonobj = $.parseJSON(data);
+				//返回服务器图片的绝对路径,给要显示的标签赋值
+				$("#imgSize1ImgSrc").attr("src",jsonobj.fullpath);
+				//返回数据库保存的相对路径,将其值填入到隐藏的框中
+				$("#imgSize1").val(jsonobj.relativepath);
 			}
-			
-		};
-	
+	};
+	//利用ajax提交表单
 	$("#itemForm").ajaxSubmit(option);
-	
 }
 </script>
 
